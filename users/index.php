@@ -58,9 +58,9 @@ include(HEADER_TEMPLATE);
 					<td><?php echo $usuario['user']; ?></td>
 					<td><?php echo $usuario['foto']; ?></td>
 					<td class="actions text-right">
-						<a href="view.php?id=<?php echo $usuario['id']; ?>" class="btn btn-sm btn-dark"><i
+						<a href="user.php?id=<?php echo $usuario['id']; ?>" class="btn btn-sm btn-dark"><i
 								class="fa fa-eye"></i> Visualizar</a>
-						<a href="edit.php?id=<?php echo $usuario['id']; ?>" class="btn btn-sm btn-secondary"><i
+						<a href="editUser.php?id=<?php echo $usuario['id']; ?>" class="btn btn-sm btn-secondary"><i
 								class="fa fa-pencil"></i> Editar</a>
 								<a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#delete-modal"
 							data="<?php echo $usuario['id']; ?>">

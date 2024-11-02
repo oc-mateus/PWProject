@@ -67,7 +67,7 @@
         </div>
         <div class="row justify-content-center mt-2">
             <div class="col-xs-6 col-sm-3 col-md-2">
-                <a href="<?php echo BASEURL; ?>users/add.php" class="btn btn-dark">
+                <a href="<?php echo BASEURL; ?>users/addUsers.php" class="btn btn-dark">
                     <div class="row">
                         <div class="col-12 text-center">
                             <i class="fa-solid fa-user-plus fa-6x"></i>

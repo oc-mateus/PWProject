@@ -7,7 +7,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                        Deseja mesmo excluir este Gerente?
+                        Deseja mesmo excluir o gerente <?php echo $adm['name']; ?>?
                         </div>
                         <div class="modal-footer">
                         <a  href="#" id="confirm" class="btn btn-light" data-bs-dismiss="modal">Não</a>

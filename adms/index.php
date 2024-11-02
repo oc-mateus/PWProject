@@ -13,6 +13,20 @@ include(HEADER_TEMPLATE);
 			<a class="btn btn-secondary" href="addAdm.php"><i class="fa-solid fa-user-plus"></i> Novo Gerente</a>
 			<a class="btn btn-light" href="index.php"><i class="fa-solid fa-rotate-right"></i> Atualizar</a>
 		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<form action="index.php" method="post">
+					<div class="row">
+						<div class="form-group col-md-4">
+							<div class="input-group mb-3">
+								<input type="text" class="form-control" maxlenght="50" name="adms" required>
+								<input type="submit" class="btn btn-secondary"><i class="fa-solid fa-search"> Consultar</i>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
 </header>
 
@@ -20,7 +34,7 @@ include(HEADER_TEMPLATE);
 	<thead>
 		<tr>
 			<th>ID</th>
-			<th width="30%">Nome</th>
+			<th>Nome</th>
 			<th>Telefone</th>
 			<th>Departamento</th>
 			<th>Atualizado em</th>

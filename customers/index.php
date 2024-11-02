@@ -19,7 +19,7 @@ include(HEADER_TEMPLATE);
 					<div class="row">
 						<div class="form-group col-md-4">
 							<div class="input-group mb-3">
-								<input type="text" class="form-control" maxlenght="50" name="users" required>
+								<input type="text" class="form-control" maxlenght="50" name="customers" required>
 								<input type="submit" class="btn btn-secondary"><i class="fa-solid fa-search"> Consultar</i>
 							</div>
 						</div>

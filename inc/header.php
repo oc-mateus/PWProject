@@ -76,7 +76,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="<?php echo BASEURL; ?>users"><i class="fa-solid fa-user-lock"></i> Gerenciar Usuários</a></li>
-                                    <li><a class="dropdown-item" href="<?php echo BASEURL; ?>users/add.php"><i class="fa-solid fa-user-tie"></i> Add. Usuário</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo BASEURL; ?>users/addUsers.php"><i class="fa-solid fa-user-tie"></i> Add. Usuário</a></li>
                                 </ul>
                             </li>
                         <?php endif; ?>
