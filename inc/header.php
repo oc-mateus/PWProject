@@ -85,12 +85,16 @@
                 <!-- Login/Logout -->
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <?php if (isset($_SESSION['user'])): ?>
+                    
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo BASEURL; ?>inc/logout.php">
-                                Bem-vindo, <?php echo $_SESSION['user']['name']; ?>! <i class="fa-solid fa-person-walking-arrow-right"></i> Logout
+                                <i class="fa-solid fa-person-walking-arrow-right"></i> Logout
                             </a>
                         </li>
-                    <?php else: ?>
+                        <li class="nav-item">
+                            Bem-vindo, <?php echo $_SESSION['user']['name']; ?>! 
+                        </li>
+                        <?php else: ?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo BASEURL; ?>inc/login.php">
                                 <i class="fa-solid fa-users"></i> Login
