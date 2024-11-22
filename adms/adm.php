@@ -1,67 +1,95 @@
 <?php
 require_once('functionsAdm.php');
 view($_GET['id']);
+session_start();
 include(HEADER_TEMPLATE);
 ?>
 
-<h2>Gerente <?php echo $adms['id']; ?></h2>
-<hr>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Gerente #<?php echo $adms['id']; ?></h2>
+  <hr>
 
-<?php if (!empty($_SESSION['message'])): ?>
-	<div class="alert alert-<?php echo $_SESSION['type']; ?>"><?php echo $_SESSION['message']; ?></div>
-<?php endif; ?>
+  <!-- Mensagem de Feedback -->
+  <?php if (!empty($_SESSION['message'])): ?>
+    <div class="alert alert-<?php echo $_SESSION['type']; ?>">
+      <?php echo $_SESSION['message']; ?>
+    </div>
+  <?php endif; ?>
 
-<dl class="dl-horizontal">
-	<dt>Nome / Razão Social:</dt>
-	<dd><?php echo $adms['name']; ?></dd>
+  <!-- Informações Pessoais -->
+  <h5 class="mb-3">Informações Pessoais</h5>
+  <dl class="row">
+    <dt class="col-sm-3">Nome / Razão Social:</dt>
+    <dd class="col-sm-9"><?php echo $adms['name']; ?></dd>
 
-	<dt>Data de Nascimento:</dt>
-	<dd><?php echo formatadata($adms['birthdate'], "d/m/Y"); ?></dd>
-</dl>
+    <dt class="col-sm-3">Data de Nascimento:</dt>
+    <dd class="col-sm-9"><?php echo formatadata($adms['birthdate'], "d/m/Y"); ?></dd>
+  </dl>
 
-<dl class="dl-horizontal">
-	<dt>Endereço:</dt>
-	<dd><?php echo $adms['address']; ?></dd>
+  <!-- Endereço -->
+  <h5 class="mb-3">Endereço</h5>
+  <dl class="row">
+    <dt class="col-sm-3">Endereço:</dt>
+    <dd class="col-sm-9"><?php echo $adms['address']; ?></dd>
 
-	<dt>Bairro:</dt>
-	<dd><?php echo $adms['hood']; ?></dd>
+    <dt class="col-sm-3">Bairro:</dt>
+    <dd class="col-sm-9"><?php echo $adms['hood']; ?></dd>
 
-	<dt>CEP:</dt>
-	<dd><?php echo cep($adms['zip_code']); ?></dd>
+    <dt class="col-sm-3">CEP:</dt>
+    <dd class="col-sm-9"><?php echo cep($adms['zip_code']); ?></dd>
+  </dl>
 
-	<dt>Data de Cadastro:</dt>
-	<dd><?php echo formatadata($adms['created'], "d/m/Y - H:i:s"); ?></dd>
+  <!-- Datas -->
+  <h5 class="mb-3">Datas</h5>
+  <dl class="row">
+    <dt class="col-sm-3">Data de Cadastro:</dt>
+    <dd class="col-sm-9"><?php echo formatadata($adms['created'], "d/m/Y - H:i:s"); ?></dd>
 
-	<dt>Data da ultima atualização:</dt>
-	<dd><?php echo formatadata($adms['modified'], "d/m/Y - H:i:s"); ?></dd>
-</dl>
+    <dt class="col-sm-3">Última Atualização:</dt>
+    <dd class="col-sm-9"><?php echo formatadata($adms['modified'], "d/m/Y - H:i:s"); ?></dd>
+  </dl>
 
-<dl class="dl-horizontal">
-	<dt>Cidade:</dt>
-	<dd><?php echo $adms['city']; ?></dd>
+  <!-- Contato -->
+  <h5 class="mb-3">Contato</h5>
+  <dl class="row">
+    <dt class="col-sm-3">Cidade:</dt>
+    <dd class="col-sm-9"><?php echo $adms['city']; ?></dd>
 
-	<dt>Telefone:</dt>
-	<dd><?php echo celPhone($adms['phone']); ?></dd>
+    <dt class="col-sm-3">UF:</dt>
+    <dd class="col-sm-9"><?php echo $adms['state']; ?></dd>
 
-	<dt>Celular:</dt>
-	<dd><?php echo telefone($adms['mobile']); ?></dd>
+    <dt class="col-sm-3">Telefone:</dt>
+    <dd class="col-sm-9"><?php echo celPhone($adms['phone']); ?></dd>
 
-	<dt>UF:</dt>
-	<dd><?php echo $adms['state']; ?></dd>
+    <dt class="col-sm-3">Celular:</dt>
+    <dd class="col-sm-9"><?php echo telefone($adms['mobile']); ?></dd>
 
-	<dt>Departamento:</dt>
-	<dd><?php echo $adms['depto']; ?></dd>
-</dl>
+    <dt class="col-sm-3">Departamento:</dt>
+    <dd class="col-sm-9"><?php echo $adms['depto']; ?></dd>
+  </dl>
 
-<td>
-    <img src="<?php echo $adms['photo']?>" width="150" height="180px" />
-</td>
+  <!-- Foto -->
+  <h5 class="mb-3">Foto</h5>
+  <dl class="row">
+    <dt class="col-sm-3">Foto Atual:</dt>
+    <dd class="col-sm-9">
+      <?php
+      if (!empty($adms['photo'])) {
+        echo "<img src=\"imagens/" . $adms['photo'] . "\" class=\"shadow p-1 mb-1 bg-body rounded\" width=\"300px\">";
+      } else {
+        echo "<img src=\"imagens/semimagem.jpg\" class=\"shadow p-1 mb-1 bg-body rounded\" width=\"300px\">";
+      }
+      ?>
+    </dd>
+  </dl>
 
-<div id="actions" class="row mt-2">
-	<div class="col-md-12">
-		<a href="editAdm.php?id=<?php echo $adms['id']; ?>" class="btn btn-dark">Editar</a>
-		<a href="index.php" class="btn btn-light">Voltar</a>
-	</div>
+  <!-- Botões de Ação -->
+  <div id="actions" class="row mt-4">
+    <div class="col text-center">
+      <a href="editAdm.php?id=<?php echo $adms['id']; ?>" class="btn btn-dark me-3"><i class="fa fa-pencil"></i> Editar</a>
+      <a href="index.php" class="btn btn-light"><i class="fa-solid fa-rotate-left"></i> Voltar</a>
+    </div>
+  </div>
 </div>
 
 <?php include(FOOTER_TEMPLATE); ?>

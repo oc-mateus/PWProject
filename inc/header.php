@@ -33,8 +33,20 @@
             border-bottom: solid 1px #666666;
             margin-bottom: 20px;
         }
+        .profile-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+        }
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            object-fit: cover;
+        }
     </style>
-    
 </head>
 <body>
     <br>
@@ -67,16 +79,16 @@
                             <li><a class="dropdown-item" href="<?php echo BASEURL; ?>adms/addAdm.php"><i class="fa-solid fa-user-plus"></i> Add. Gerente</a></li>
                         </ul>
                     </li>
-                    <!-- Usuários Dropdown (exibe apenas se o usuário estiver logado como admin) -->
+
                     <?php if (isset($_SESSION['user'])): ?>
-                        <?php if ($_SESSION['user']['is_admin']): ?>
+                        <?php if ($_SESSION['user'] == "admin"): ?>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Usuários
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="<?php echo BASEURL; ?>users"><i class="fa-solid fa-user-lock"></i> Gerenciar Usuários</a></li>
-                                    <li><a class="dropdown-item" href="<?php echo BASEURL; ?>users/add.php"><i class="fa-solid fa-user-tie"></i> Add. Usuário</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo BASEURL; ?>users/addUsers.php"><i class="fa-solid fa-user-tie"></i> Add. Usuário</a></li>
                                 </ul>
                             </li>
                         <?php endif; ?>
@@ -85,16 +97,17 @@
                 <!-- Login/Logout -->
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <?php if (isset($_SESSION['user'])): ?>
-                    
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo BASEURL; ?>inc/logout.php">
-                                <i class="fa-solid fa-person-walking-arrow-right"></i> Logout
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle profile-dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="<?php echo $_SESSION['foto'] ?? 'default.jpg'; ?>" alt="Foto de Perfil" class="profile-img">
+                                <?php echo $_SESSION['nome']; ?>
                             </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="users/editUser.php"><i class="fa-solid fa-user-edit"></i> Editar Perfil</a></li>
+                                <li><a class="dropdown-item" href="<?php echo BASEURL; ?>inc/logout.php"><i class="fa-solid fa-person-walking-arrow-right"></i> Logout</a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            Bem-vindo, <?php echo $_SESSION['user']['name']; ?>! 
-                        </li>
-                        <?php else: ?>
+                    <?php else: ?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo BASEURL; ?>inc/login.php">
                                 <i class="fa-solid fa-users"></i> Login
@@ -106,11 +119,5 @@
         </div>
     </nav>
     <!-- Fim do Menu -->
+    <main class="container">                    
 
-    <main class="container">
-        <!-- Conteúdo principal aqui -->
-    </main>
-
-    <script src="<?php echo BASEURL; ?>js/bootstrap/bootstrap.bundle.min.js"></script>
-</body>
-</html>

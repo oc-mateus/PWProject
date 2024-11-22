@@ -16,6 +16,23 @@ function open_database()
 	}
 }
 
+ /**
+ * Criptografia
+ */
+function criptografia($senha) {
+    // ==> Criptografia Blowfish
+    // http://www.linhadecodigo.com.br/artigo/3332/criptografando-senhas-usando-bcrypt-blowfish-no-php.aspx
+
+    // Aplicando criptografia na senha
+    $custo = "09";
+    $salt = "Cf1f11ePArKlBJomM0F6aJ";
+
+    // Gera um hash baseado em bcrypt
+    $hash = crypt($senha, "$2a$" . $custo . "$" . $salt . "$");
+
+    return $hash; // retorna a senha criptografada
+}
+
 function close_database($conn)
 {
 	try {

@@ -1,86 +1,44 @@
 <?php
+if (!isset($_SESSION)) session_start(); 
 
-include ('../config.php');
+include('../config.php');
 require_once(DBAPI);
-include(HEADER_TEMPLATE);
 
 
-
-if (!empty($_POST) AND (empty($_POST['login']) OR empty($_POST['senha']))) {
+if (empty($_POST['login']) || empty($_POST['senha'])) {
     header('Location: ' . BASEURL . 'index.php');
     exit;
 }
 
 $bd = open_database();
+
 try {
+    $usuario = $bd->real_escape_string($_POST['login']); 
+    $senha = criptografia($bd->real_escape_string($_POST['senha']));
+
     
-    
-    $bd -> select_db(DB_NAME);
-    
-    
-    $usuario = $_POST['login'];
-    $senha = $_POST['senha'];
-    
-    
-    if (!empty($usuario) AND !empty($senha)) {
+    $sql = "SELECT id, nome, user, password FROM usuarios WHERE user = '$usuario' AND password = '$senha' LIMIT 1";
+    $query = $bd->query($sql);
+
+    if ($query && $query->num_rows > 0) {
+        $dados = $query->fetch_assoc();
+
         
-        $senha = criptografia($_POST['senha']);
-        
-        
-        $sql = "SELECT id, nome, user, password FROM usuarios WHERE (user = '". $usuario ."') AND (password = '". $senha ."') LIMIT 1";
-        $query = $bd->query($sql);
-        
-        if ($query->num_rows > 0) {
-            
-            $dados = $query->fetch_assoc();
-            echo "<b>";
-            //var_dump($dados);
-            echo "</b>";
-            $id = $dados['id'];
-            $nome = $dados['nome'];
-            $user = $dados['user'];
-            $password = $dados['password'];
-            //var_dump($user);
-            
-            
-            if (!empty($user)) {
-                if (!isset($_SESSION)) session_start();
-                $_SESSION['message'] = "Bem vindo " . $nome . "!";
-                $_SESSION['type'] = "info";
-                $_SESSION['id'] = $id;
-                $_SESSION['nome'] = $nome;
-                $_SESSION['user'] = $user;
-                echo "<br>";
-                var_dump($user);
-            } else {
-                
-                throw new Exception("Não foi possível se conectar!<br>Verifique seu usuário e senha.");
-            }
-            
-            header("Location: " . BASEURL . 'index.php');
-        } else {
-            
-            throw new Exception("Não foi possível se conectar!<br>Verifique seu usuário e senha.");
-        }
+        $_SESSION['id'] = $dados['id'];
+        $_SESSION['nome'] = $dados['nome'];
+        $_SESSION['user'] = $dados['user'];
+        $_SESSION['message'] = "Bem-vindo, " . $dados['nome'] . "!";
+        $_SESSION['type'] = "info";
+
+        header("Location: " . BASEURL . 'index.php');
+        exit;
     } else {
-        
-        throw new Exception("Não foi possível se conectar!<br>Verifique seu usuário e senha.");
+        throw new Exception("Usuário ou senha inválidos.");
     }
 } catch (Exception $e) {
-    $_SESSION['message'] = 'Ocorreu um erro: ' . $e->GetMessage();
+    $_SESSION['message'] = 'Erro: ' . $e->getMessage();
     $_SESSION['type'] = 'danger';
+    header("Location: " . BASEURL . 'index.php');
+    exit;
 }
 ?>
-
-<?php if (!empty($_SESSION['message'])) : ?>
-<div class="alert alert-<?php echo $_SESSION['type']; ?> alert-dismissible" role="alert" id="actions">
-<?php echo $_SESSION['message']; ?>
-<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-<?php endif; ?>
-
-</div>
-<?php clear_messages(); ?>
-</header>
-<a href="<?php echo BASEURL ?>index.php" class="btn btn-light"><i class="fa-solid fa-rotate-left"></i> Voltar</a>
-<?php include(FOOTER_TEMPLATE); ?>

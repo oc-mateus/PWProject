@@ -1,38 +1,120 @@
 <?php
 include ("../config.php");
 include (HEADER_TEMPLATE);
+session_start();
 ?>
-<Style>
-   .centraliza{
-       display: grid;
-       place-items: center;
-    }
-   
-</Style>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #023047
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+}
+
+.formLogin {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 7px;
+    padding: 40px;
+    box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
+    gap: 5px
+}
+
+.areaLogin img {
+    width: 420px;
+}
+
+.formLogin h1 {
+    padding: 0;
+    margin: 0;
+    font-weight: 500;
+    font-size: 2.3em;
+}
+
+.formLogin p {
+    display: inline-block;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.formLogin input {
+    padding: 15px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    border-radius: 4px;
+    transition: all linear 160ms;
+    outline: none;
+}
+
+
+.formLogin input:focus {
+    border: 1px solid #f72585;
+}
+
+.formLogin label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.formLogin a {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #555;
+    transition: all linear 160ms;
+}
+
+.formLogin a:hover {
+    color: #f72585;
+}
+
+.btn {
+    background-color: #f72585;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    border: none !important;
+    transition: all linear 160ms;
+    cursor: pointer;
+    margin: 0 !important;
+
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background-color: #ff0676;
+
+}
+    </style>
 <div id="actions" class="mt-5 mb-5">
-    <form action="valida.php" method="post">
-        <div class="row">
-            <!-- User input -->
-             <div class="centraliza">
-                <div class="form-floating col-md-4 col-md-offset-2">
-                    <div class="row mt-2">
-                    <label for="log">Usuário</label>
-                    <input type="text" class="form-control" id="log" placeholder="Usuário" name="login">
-                    </div>
-                <!-- Password input --> 
-                <div class="row mt-2">
-                <label for="pass">Senha</label>
-                    <input type="password" class="form-control" id="pass" placeholder="Senha" name="senha">
-                    </div>
-                
-                <!-- Submit button -->
-                <div class="row mt-2">
-                    <button type="submit" class="btn btn-secondary btn-block mb-4"><i class="fa-solid fa-user-check"></i> Conectar</button>
-                    <a href="<?php echo BASEURL; ?>" class="btn btn-light btn-block mb-4"><i class="fa-solid fa-rotate-left"></i> Cancelar</a>
-                    </div>
-                </div>
-             </div>
-        </div>
-    </form>
+<div class="page">
+        <form action="valida.php" method="POST" class="formLogin">
+            <h1>Login</h1>
+            <p>Digite os seus dados de acesso no campo abaixo.</p>
+            <label for="log">Usuário</label>
+            <input type="text" placeholder="Digite seu Usuário" id="log" name="login"  autofocus="true" />
+            <label for="pass">Senha</label>
+            <input type="password" id="pass" name="senha" placeholder="Digite sua senha" />
+            <p>Não tem conta?, <a href="<?php echo BASEURL; ?>users/addUsers.php">Cadastrar.</a></p>
+            <input type="submit" class="btn" />
+        </form>
+    </div>
 </div>
 <?php include (FOOTER_TEMPLATE);?>

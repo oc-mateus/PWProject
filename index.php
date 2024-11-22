@@ -6,7 +6,7 @@
     $db = open_database();
 ?>
 
-<h1 class="text-center">Dashboard</h1>
+<h1 class="text-center">Menu</h1>
 <hr>
 
 <?php if ($db) : ?>
@@ -65,32 +65,37 @@
                 </a>
             </div>
         </div>
-        <div class="row justify-content-center mt-2">
-            <div class="col-xs-6 col-sm-3 col-md-2">
-                <a href="<?php echo BASEURL; ?>users/add.php" class="btn btn-dark">
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <i class="fa-solid fa-user-plus fa-6x"></i>
-                        </div>
-                        <div class="col-12 text-center">
-                            <p><strong>Novo Usuário</strong></p>
-                        </div>
+        <?php if (isset($_SESSION['user'])): ?>
+            <?php if ($_SESSION['user'] == "admin"): ?>
+                <div class="row justify-content-center mt-2">
+                    <div class="col-xs-6 col-sm-3 col-md-2">
+                        <a href="<?php echo BASEURL; ?>users/addUsers.php" class="btn btn-dark">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <i class="fa-solid fa-user-plus fa-6x"></i>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <p><strong>Novo Usuário</strong></p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </a>
-            </div>
-            <div class="col-xs-6 col-sm-3 col-md-2">
-                <a href="<?php echo BASEURL; ?>users" class="btn btn-secondary">
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <i class="fa-solid fa-users fa-6x"></i>
-                        </div>
-                        <div class="col-12 text-center">
-                            <p><strong>Usuários</strong></p>
-                        </div>
+                    <div class="col-xs-6 col-sm-3 col-md-2">
+                        <a href="<?php echo BASEURL; ?>users" class="btn btn-secondary">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <i class="fa-solid fa-users fa-6x"></i>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <p><strong>Usuários</strong></p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </a>
-            </div>
-        </div>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+
     </div>
 
 <?php else : ?>
