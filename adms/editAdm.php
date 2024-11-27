@@ -83,7 +83,7 @@ session_start();
       <div class="form-group col-md-6">
         <?php if (!empty($adms['photo'])): ?>
           <label>Foto Atual:</label><br>
-          <img src="imagens/<?php echo $adms['photo']; ?>" alt="Foto Atual" class="img-thumbnail" style="max-width: 200px; max-height: 200px;"><br>
+          <img src="adms/imagens/<?php echo $adms['photo']; ?>" alt="Foto Atual" class="img-thumbnail" style="max-width: 200px; max-height: 200px;"><br>
           <label for="photo" class="mt-2">Alterar Foto:</label>
         <?php else: ?>
           <label for="photo">Adicionar Foto:</label>

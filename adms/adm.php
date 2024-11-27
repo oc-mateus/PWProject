@@ -75,9 +75,9 @@ include(HEADER_TEMPLATE);
     <dd class="col-sm-9">
       <?php
       if (!empty($adms['photo'])) {
-        echo "<img src=\"imagens/" . $adms['photo'] . "\" class=\"shadow p-1 mb-1 bg-body rounded\" width=\"300px\">";
+        echo "<img src=\"adms/imagens/" . $adms['photo'] . "\" class=\"shadow p-1 mb-1 bg-body rounded\" width=\"300px\">";
       } else {
-        echo "<img src=\"imagens/semimagem.jpg\" class=\"shadow p-1 mb-1 bg-body rounded\" width=\"300px\">";
+        echo "<img src=\"adms/imagens/semimagem.jpg\" class=\"shadow p-1 mb-1 bg-body rounded\" width=\"300px\">";
       }
       ?>
     </dd>

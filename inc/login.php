@@ -65,7 +65,7 @@ body {
 
 
 .formLogin input:focus {
-    border: 1px solid #f72585;
+    border: 1px solid #1d2d44;
 }
 
 .formLogin label {
@@ -82,11 +82,11 @@ body {
 }
 
 .formLogin a:hover {
-    color: #f72585;
+    color: #1d2d44;
 }
 
 .btn {
-    background-color: #f72585;
+    background-color: #999999;
     color: #fff;
     font-size: 14px;
     font-weight: 600;
@@ -99,7 +99,8 @@ body {
 
 .btn:hover {
     transform: scale(1.05);
-    background-color: #ff0676;
+    background-color: #1d2d44;
+    color: #fff
 
 }
     </style>
@@ -109,11 +110,11 @@ body {
             <h1>Login</h1>
             <p>Digite os seus dados de acesso no campo abaixo.</p>
             <label for="log">Usuário</label>
-            <input type="text" placeholder="Digite seu Usuário" id="log" name="login"  autofocus="true" />
+            <input type="text" placeholder="Digite seu Usuário" id="log" name="login"  autofocus="true" required/>
             <label for="pass">Senha</label>
-            <input type="password" id="pass" name="senha" placeholder="Digite sua senha" />
+            <input type="password" id="pass" name="senha" placeholder="Digite sua senha" required/>
             <p>Não tem conta?, <a href="<?php echo BASEURL; ?>users/addUsers.php">Cadastrar.</a></p>
-            <input type="submit" class="btn" />
+            <button type="submit" class="btn">Logar</button>
         </form>
     </div>
 </div>

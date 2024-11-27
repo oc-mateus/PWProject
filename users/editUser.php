@@ -39,7 +39,7 @@ session_start();
       <div class="form-group col-md-6">
         <?php if (!empty($usuario['foto'])): ?>
           <label>Foto Atual:</label><br>
-          <img src="fotos/<?php echo $usuario['foto']; ?>" alt="Foto Atual" class="img-thumbnail" style="max-width: 200px; max-height: 200px;"><br>
+          <img src="users/fotos/<?php echo $usuario['foto']; ?>" alt="Foto Atual" class="img-thumbnail" style="max-width: 200px; max-height: 200px;"><br>
           <label for="foto" class="mt-2">Alterar Foto:</label>
         <?php else: ?>
           <label for="foto">Adicionar Foto:</label>
@@ -52,7 +52,7 @@ session_start();
     <div id="actions" class="row mt-4">
       <div class="col text-center">
         <button type="submit" class="btn btn-dark me-3"><i class="fa-solid fa-floppy-disk"></i> Salvar</button>
-        <a href="index.php" class="btn btn-light"><i class="fa-solid fa-xmark"></i> Cancelar</a>
+        <a href="<?php echo BASEURL; ?>index.php" class="btn btn-light"><i class="fa-solid fa-xmark"></i> Cancelar</a>
       </div>
     </div>
   </form>

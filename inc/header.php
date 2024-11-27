@@ -38,6 +38,7 @@
             align-items: center;
             gap: 10px;
             color: #fff;
+            margin-right: 50px;
         }
         .profile-img {
             width: 40px;
@@ -99,11 +100,10 @@
                     <?php if (isset($_SESSION['user'])): ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle profile-dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="<?php echo $_SESSION['foto'] ?? 'default.jpg'; ?>" alt="Foto de Perfil" class="profile-img">
                                 <?php echo $_SESSION['nome']; ?>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="users/editUser.php"><i class="fa-solid fa-user-edit"></i> Editar Perfil</a></li>
+                                <li><a class="dropdown-item" href="<?php echo BASEURL; ?>users/editUser.php?id=<?php echo $_SESSION['id']; ?>"><i class="fa-solid fa-user-edit"></i> Editar Perfil</a></li>
                                 <li><a class="dropdown-item" href="<?php echo BASEURL; ?>inc/logout.php"><i class="fa-solid fa-person-walking-arrow-right"></i> Logout</a></li>
                             </ul>
                         </li>

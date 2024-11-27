@@ -55,9 +55,9 @@ include(HEADER_TEMPLATE);
 						<td><?php echo $usuario['user']; ?></td>
 						<td>
 							<?php if (!empty($usuario['foto'])): ?>
-								<img src="fotos/<?php echo $usuario['foto']; ?>" alt="Foto do Usuário" class="img-thumbnail" style="max-width: 50px;">
+								<img src="users/fotos/<?php echo $usuario['foto']; ?>" alt="Foto do Usuário" class="img-thumbnail" style="max-width: 50px;">
 							<?php else: ?>
-								<img src="fotos/semimagem.jpg" alt="Sem Foto" class="img-thumbnail" style="max-width: 50px;">
+								<img src="users/fotos/semimagem.png" alt="Sem Foto" class="img-thumbnail" style="max-width: 50px;">
 							<?php endif; ?>
 						</td>
 						<td class="actions">

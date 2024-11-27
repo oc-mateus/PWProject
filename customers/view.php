@@ -77,9 +77,9 @@ include(HEADER_TEMPLATE);
         <dd>
             <?php
             if (!empty($customer['photo'])) {
-                echo "<img src=\"uploads/" . $customer['photo'] . "\" class=\"shadow p-1 mb-1 bg-body rounded\" width=\"300px\">";
+                echo "<img src=\"customers/uploads/" . $customer['photo'] . "\" class=\"shadow p-1 mb-1 bg-body rounded\" width=\"300px\">";
             } else {
-                echo "<img src=\"uploads/semimagem.jpg\" class=\"shadow p-1 mb-1 bg-body rounded\" width=\"300px\">";
+                echo "<img src=\"customers/uploads/semimagem.jpg\" class=\"shadow p-1 mb-1 bg-body rounded\" width=\"300px\">";
             }
             ?>
         </dd>

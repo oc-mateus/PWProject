@@ -35,9 +35,9 @@ include(HEADER_TEMPLATE);
     <dd>
       <?php
       if (!empty($usuario['foto'])) {
-          echo "<img src=\"fotos/" . $usuario['foto'] . "\" class=\"shadow p-1 mb-1 bg-body rounded\" width=\"300px\">";
+          echo "<img src=\"users/fotos/" . $usuario['foto'] . "\" class=\"shadow p-1 mb-1 bg-body rounded\" width=\"300px\">";
       } else {
-          echo "<img src=\"fotos/semimagem.jpg\" class=\"shadow p-1 mb-1 bg-body rounded\" width=\"300px\">";
+          echo "<img src=\"users/fotos/semimagem.png\" class=\"shadow p-1 mb-1 bg-body rounded\" width=\"300px\">";
       }
       ?>
     </dd>

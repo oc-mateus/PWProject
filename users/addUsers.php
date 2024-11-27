@@ -7,107 +7,112 @@
 <?php include(HEADER_TEMPLATE); ?>
 <head>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-    body {
-        font-family: 'Inter', sans-serif;
-        margin: 0;
-        padding: 0;
-        color: #023047;
-    }
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #023047
+}
 
-    .page {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        align-content: center;
-        justify-content: center;
-        width: 100%;
-        height: 100vh;
-        background-color: #fff;
-    }
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+}
 
-    .formLogin {
-        display: flex;
-        flex-direction: column;
-        background-color: #fff;
-        border-radius: 7px;
-        padding: 40px;
-        box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
-        gap: 5px;
-    }
+.formLogin {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 7px;
+    padding: 40px;
+    box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
+    gap: 5px
+}
 
-    .formLogin h1 {
-        padding: 0;
-        margin: 0;
-        font-weight: 500;
-        font-size: 2.3em;
-        margin-bottom: 20px;
-    }
+.areaLogin img {
+    width: 420px;
+}
 
-    .formLogin p {
-        display: inline-block;
-        font-size: 14px;
-        color: #666;
-        margin-bottom: 25px;
-    }
+.formLogin h1 {
+    padding: 0;
+    margin: 0;
+    font-weight: 500;
+    font-size: 2.3em;
+}
 
-    .formLogin input {
-        padding: 15px;
-        font-size: 14px;
-        border: 1px solid #ccc;
-        margin-bottom: 20px;
-        margin-top: 5px;
-        border-radius: 4px;
-        transition: all linear 160ms;
-        outline: none;
-    }
+.formLogin p {
+    display: inline-block;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 25px;
+}
 
-    .formLogin input:focus {
-        border: 1px solid #f72585;
-    }
+.formLogin input {
+    padding: 15px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    border-radius: 4px;
+    transition: all linear 160ms;
+    outline: none;
+}
 
-    .formLogin label {
-        font-size: 14px;
-        font-weight: 600;
-    }
 
-    .formLogin a {
-        display: inline-block;
-        margin-bottom: 20px;
-        font-size: 13px;
-        color: #555;
-        transition: all linear 160ms;
-    }
+.formLogin input:focus {
+    border: 1px solid #1d2d44;
+}
 
-    .formLogin a:hover {
-        color: #f72585;
-    }
+.formLogin label {
+    font-size: 14px;
+    font-weight: 600;
+}
 
-    .btn {
-        background-color: #f72585;
-        color: #fff;
-        font-size: 14px;
-        font-weight: 600;
-        border: none !important;
-        transition: all linear 160ms;
-        cursor: pointer;
-        margin: 0 !important;
-        padding: 15px;
-        border-radius: 4px;
-    }
+.formLogin a {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #555;
+    transition: all linear 160ms;
+}
 
-    .btn:hover {
-        transform: scale(1.05);
-        background-color: #ff0676;
-    }
+.formLogin a:hover {
+    color: #1d2d44;
+}
 
-    #senhaErro {
+.btn {
+    background-color: #999999;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    border: none !important;
+    transition: all linear 160ms;
+    cursor: pointer;
+    margin: 0 !important;
+
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background-color: #1d2d44;
+    color: #fff
+
+}
+
+#senhaErro {
         color: red;
         font-size: 0.9em;
         display: none;
     }
-</style>
+    </style>
 </head>
 <br>
 <br>

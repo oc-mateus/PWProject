@@ -5,7 +5,7 @@
     try{
       $usuario = find("usuarios", $_GET['id']);
       delete($_GET['id']);
-      unlink("fotos/" . $usuario['foto']);
+      unlink("users/fotos/" . $usuario['foto']);
     } catch(Exception $e){
       $_SESSION['message'] = "Não foi possivel realizar a operação: " . $e->getMessage();
       $_SESSION['type'] = "danger";

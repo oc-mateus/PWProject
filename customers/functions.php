@@ -30,6 +30,13 @@
 		
 		// Upload da photo
 		try {
+			// Cria a pasta de destino, se não existir
+			if (!is_dir($pasta_destino)) {
+				if (!mkdir($pasta_destino, 0777, true)) {
+					throw new Exception("Não foi possível criar a pasta de destino: $pasta_destino");
+				}
+			}
+
 			$nomearquivo = basename($arquivo_destino); // nome do arquivo
 			$uploadOk = 1;
 			// Verificando se o arquivo é uma imagem
@@ -38,12 +45,10 @@
 				if ($check !== false) {
 					$_SESSION['message'] = "File is an image - " . $check["mime"] . ".";
 					$_SESSION['type'] = "info";
-					//echo "File is an image - " . $check["mime"] . ".";
 					$uploadOk = 1;
 				} else {
 					$uploadOk = 0;
 					throw new Exception("O arquivo não é uma imagem!");
-					//echo "O arquivo não é uma imagem!";
 				}
 			}
 			
@@ -51,14 +56,12 @@
 			if (file_exists($arquivo_destino)) {
 				$uploadOk = 0;
 				throw new Exception("Desculpe, o arquivo já existe!");
-				//echo "Desculpe, o arquivo já existe.";
 			}
 			
 			// Verificando se o tamanho do arquivo
 			if ($tamanho_arquivo > 5000000) {
 				$uploadOk = 0;
 				throw new Exception("Desculpe, mas o arquivo é muito grande!");
-				//echo "Desculpe, mas o arquivo é muito grande!";
 			}
 			
 			// Allow certain file formats
@@ -66,23 +69,18 @@
 					&& $tipo_arquivo != "gif") {
 						$uploadOk = 0;
 						throw new Exception("Desculpe, mas só são permitidos arquivos de imagem JPG, JPEG, PNG e GIF!");
-						//echo "Desculpe, mas só são permitidos arquivos de imagem JPG, JPEG, PNG e GIF!";
 					}
 					
 					// Check if $uploadOk is set to 0 by an error
 					if ($uploadOk == 0) {
 						throw new Exception("Desculpe, mas o arquivo não pode ser enviado.");
-						//echo "Desculpe, mas o arquivo não pode ser enviado.";
 					} else {
 						// Se tudo estiver OK, tentamos fazer o upload do arquivo
 						if (move_uploaded_file($_FILES["photo"]["tmp_name"], $arquivo_destino)) {
-							//colocando o nome do arquivo da photo do usuário no vetor
 							$_SESSION['message'] = "O arquivo " . htmlspecialchars($nomearquivo) . " foi armazenado.";
 							$_SESSION['type'] = "success";
-							//echo "The file ". htmlspecialchars(basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
 						} else {
 							throw new Exception("Desculpe, mas o arquivo não pode ser enviado.");
-							//echo "Sorry, there was an error uploading your file.";
 						}
 					}
 		} catch (Exception $e) {
@@ -101,15 +99,15 @@
 			$customer['modified'] = $customer['created'] = $today->format("Y-m-d H:i:s");
 
 			if (!empty($_FILES["photo"]["name"])){
-				$pasta_destino = "uploads/"; //pasta onde ficam as photos
-				$arquivo_destino = $pasta_destino . basename($_FILES["photo"]["name"]); //Caminho completo até o arquivo que será gravado
+				$pasta_destino = "customers/uploads/"; // pasta onde ficam as photos
+				$arquivo_destino = $pasta_destino . basename($_FILES["photo"]["name"]); // Caminho completo até o arquivo que será gravado
 				$nome_arquivo = basename($_FILES["photo"]["name"]); // nome do arquivo
 				$tamanho_arquivo = getimagesize($_FILES["photo"]["tmp_name"]);
 				$tamanho_arquivo = $_FILES["photo"]["size"]; // tamanho do arquivo em bytes
 				$nome_temp = $_FILES["photo"]["tmp_name"]; // nome e caminho do arquivo no servidor
 				$tipo_arquivo = strtolower(pathinfo($arquivo_destino, PATHINFO_EXTENSION)); // extensão do arquivo
 
-				//Chamada da função upload para gravar a imagem
+				// Chamada da função upload para gravar a imagem
 				upload($pasta_destino, $arquivo_destino, $tipo_arquivo, $nome_temp, $tamanho_arquivo);
 
 				$customer['photo'] = $nome_arquivo;
@@ -120,7 +118,6 @@
 	}
 	
 
-	
 	function edit() {
 		$now = date_create('now', new DateTimeZone('America/Sao_Paulo'));
 	
@@ -133,8 +130,8 @@
 	
 				// Lida com o upload da nova imagem
 				if (!empty($_FILES["photo"]["name"])){
-					$pasta_destino = "uploads/"; //pasta onde ficam as photos
-					$arquivo_destino = basename($_FILES["photo"]["name"]); //Caminho completo até o arquivo que será gravado
+					$pasta_destino = "customers/uploads/"; // pasta onde ficam as photos
+					$arquivo_destino = $pasta_destino . basename($_FILES["photo"]["name"]); // Caminho completo até o arquivo que será gravado
 					$nome_arquivo = basename($_FILES["photo"]["name"]); // nome do arquivo
 					$tamanho_arquivo = getimagesize($_FILES["photo"]["tmp_name"]);
 					$tamanho_arquivo = $_FILES["photo"]["size"]; // tamanho do arquivo em bytes
@@ -162,12 +159,12 @@
 	 *  Exclusão de um Cliente ou Gerente
 	 */
 
-function delete($id = null) {
+	 function delete($id = null) {
 
-  global $customer;
-  $customer = remove('customers', $id);
-
-  header('location: index.php');
-}
-	
-?>
+		global $customer;
+		$customer = remove('customers', $id);
+	  
+		header('location: index.php');
+	  }
+		  
+	  ?>

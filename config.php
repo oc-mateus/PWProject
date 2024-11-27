@@ -1,13 +1,13 @@
 <?php
 
 	/** O nome do banco de dados*/
-	define("DB_NAME", "wda_crud");
+	define("DB_NAME", "cczjgxab_wda_crud");
 
 	/** Usuário do banco de dados MySQL */
-	define("DB_USER", "root");
+	define("DB_USER", "cczjgxab_wda_crud");
 
 	/** Senha do banco de dados MySQL */
-	define("DB_PASSWORD", "");
+	define("DB_PASSWORD", "QbcahdDuUuAyfwTB7d6m ");
 
 	/** nome do host do MySQL */
 	define("DB_HOST", "localhost");
@@ -18,7 +18,7 @@
 		
 	/** caminho no server para o sistema **/
 	if ( !defined("BASEURL") )
-		define("BASEURL", "/PWProject/");
+		define("BASEURL", "/cadmanagers.x10.mx/");
 		
 	/** caminho do arquivo de banco de dados **/
 	if ( !defined("DBAPI") )

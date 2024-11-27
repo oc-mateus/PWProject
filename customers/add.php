@@ -56,7 +56,7 @@
       </div>
       <div class="form-group col-md-3">
         <label for="phone" class="form-label">Telefone</label>
-        <input type="text" class="form-control" name="customer['phone']" maxlength="10" placeholder="Somente números">
+        <input type="text"  class="form-control" name="customer['phone']" maxlength="10" placeholder="Somente números">
       </div>
       <div class="form-group col-md-3">
         <label for="mobile" class="form-label">Celular</label>
